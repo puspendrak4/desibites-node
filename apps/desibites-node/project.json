@@ -1,0 +1,56 @@
+{
+  "name": "desibites-node",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/desibites-node/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/desibites-node",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/desibites-node/src/main.ts",
+        "tsConfig": "apps/desibites-node/tsconfig.app.json",
+        "assets": ["apps/desibites-node/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "desibites-node:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "desibites-node:build:development"
+        },
+        "production": {
+          "buildTarget": "desibites-node:build:production"
+        }
+      }
+    }
+  }
+}
