@@ -35,5 +35,6 @@
       },
       "exclude": ["apps/desibites-node-e2e/**/*"]
     }
-  ]
+  ],
+  "nxCloudAccessToken": "ZTk0ZjIyOTEtZDBmOC00ZTkzLTlmMzEtMzVhYjIxNjMwMzIxfHJlYWQtd3JpdGU="
 }
